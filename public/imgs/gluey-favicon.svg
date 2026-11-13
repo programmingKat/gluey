@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Gluey</title>
+  <!-- CH2OH tuft -->
+  <line x1="15.5" y1="25.5" x2="10" y2="12" stroke="#2f7fd6" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="10" cy="11" r="5" fill="#ffc94d"/>
+  <!-- ring body -->
+  <polygon points="32,16 48.5,25.5 48.5,44.5 32,54 15.5,44.5 15.5,25.5"
+           fill="#a9dcff" stroke="#2f7fd6" stroke-width="4" stroke-linejoin="round"/>
+  <!-- carbon atoms -->
+  <g fill="#2f7fd6">
+    <circle cx="32" cy="16" r="5"/>
+    <circle cx="48.5" cy="44.5" r="5"/>
+    <circle cx="32" cy="54" r="5"/>
+    <circle cx="15.5" cy="44.5" r="5"/>
+    <circle cx="15.5" cy="25.5" r="5"/>
+  </g>
+  <!-- ring oxygen -->
+  <circle cx="48.5" cy="25.5" r="5.5" fill="#ff7a8a"/>
+  <!-- face -->
+  <circle cx="25.5" cy="33" r="3" fill="#1b2b4b"/>
+  <circle cx="38.5" cy="33" r="3" fill="#1b2b4b"/>
+  <circle cx="26.5" cy="32" r="1" fill="#fff"/>
+  <circle cx="39.5" cy="32" r="1" fill="#fff"/>
+  <path d="M28 39 Q32 43.5 36 39" fill="none" stroke="#1b2b4b" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="21.5" cy="38.5" r="2.4" fill="#ff9fb0" opacity=".8"/>
+  <circle cx="42.5" cy="38.5" r="2.4" fill="#ff9fb0" opacity=".8"/>
+</svg>
