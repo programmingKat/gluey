@@ -1,10 +1,12 @@
 const passport = require("passport");
 const validator = require("validator");
 const User = require("../models/User");
-
+const Child = require("../models/Child")
 exports.getLogin = (req, res) => {
+  //if user is already logged in
   if (req.user) {
-    return res.redirect("/profile");
+    console.log(req.user)
+    return res.redirect("/home");
   }
   res.render("login", {
     title: "Login",
@@ -39,7 +41,7 @@ exports.postLogin = (req, res, next) => {
         return next(err);
       }
       req.flash("success", { msg: "Success! You are logged in." });
-      res.redirect(req.session.returnTo || "/profile");
+      res.redirect(req.session.returnTo || "/home");
     });
   })(req, res, next);
 };
@@ -58,10 +60,10 @@ exports.logout = (req, res) => {
 
 exports.getSignup = (req, res) => {
   if (req.user) {
-    return res.redirect("/profile");
+    return res.redirect("/home");
   }
   res.render("signup", {
-    title: "Create Account",
+    title: "Create Account"
   });
 };
 
@@ -85,20 +87,22 @@ exports.postSignup = (req, res, next) => {
   });
 
   const user = new User({
-    userName: req.body.userName,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     email: req.body.email,
     password: req.body.password,
+    role: req.body.role
   });
 
   User.findOne(
-    { $or: [{ email: req.body.email }, { userName: req.body.userName }] },
+    { email: req.body.email },
     (err, existingUser) => {
       if (err) {
         return next(err);
       }
       if (existingUser) {
         req.flash("errors", {
-          msg: "Account with that email address or username already exists.",
+          msg: "Account with that email address already exists.",
         });
         return res.redirect("../signup");
       }
@@ -110,9 +114,33 @@ exports.postSignup = (req, res, next) => {
           if (err) {
             return next(err);
           }
-          res.redirect("/profile");
+          res.redirect("/home");
         });
       });
     }
   );
+};
+
+exports.postRegisterChild = (req, res, next) => {
+
+  const child = new Child({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    birthDate: req.body.birthDate,
+    height: req.body.height,
+    weight: req.body.weight
+  });
+
+  child.save((err) => {
+    if (err) {
+      return next(err);
+    }
+  })
+  req.user.children.push(child)
+  req.user.save((err) => {
+    if (err) {
+      return next(err);
+    }
+  })
+  res.redirect("/home");
 };
