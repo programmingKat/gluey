@@ -15,6 +15,11 @@
                         <% for(let i =0; i< user.children.length; i++){%>
                             <section>
                                 <strong>Child First Name</strong>: <%= user.children[i].firstName %><br>
+                                <strong>Child Last Name</strong>: <%= user.children[i].lastName %><br>
+                                <strong>Child Birth Date</strong>: <%= user.children[i].birthDate %><br>
+                                <strong>Child Height</strong>: <%= user.children[i].height %><br>
+                                <strong>Child Weight</strong>: <%= user.children[i].weight %><br>
+                                <a href="/child?id=<%=user.children[i]._id%>">This Child</a>
                             </section>
                         <% } %>     
                     </p>
