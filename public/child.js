@@ -5,7 +5,6 @@ let streaming = false;
 
 const video = document.getElementById("video");
 const canvas = document.getElementById("canvas");
-const photo = document.getElementById("photo");
 const startButton = document.getElementById("start-button");
 const allowButton = document.getElementById("permissions-button");
 
@@ -47,7 +46,7 @@ function clearPhoto() {
   photo.setAttribute("src", data);
 }
 
-clearPhoto();
+//clearPhoto();
 
 function takePicture() {
   const context = canvas.getContext("2d");
@@ -57,7 +56,9 @@ function takePicture() {
     context.drawImage(video, 0, 0, width, height);
 
     const data = canvas.toDataURL("image/png");
-    photo.setAttribute("src", data);
+    //photo.setAttribute("src", data);
+    document.querySelector("#imageData").value = data; 
+    
   } else {
     clearPhoto();
   }

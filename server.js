@@ -32,7 +32,7 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 //Body Parsing
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true, limit:"4MB"}));
 app.use(express.json());
 
 //Logging
